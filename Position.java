@@ -21,14 +21,60 @@ public class Position {
 		return this.longitude;
 	}
 	
-	//convert direction to degree
-	public double dirToDeg(Direction direction) {
-		if(direction.degree == Direction.N) { return 0;}
+	public double getDegree(Direction direction) {
+		double degree = 0;
+		if (direction.direction == direction.N){ 
+			degree = 0;}
+		else if (direction.direction == direction.NNE) {
+			degree = 22.5;
+		}
+		else if(direction.direction == direction.NE) {
+			degree = 45;
+		}
+		else if(direction.direction == direction.ENE) {
+			degree = 67.5;
+		}
+		else if (direction.direction == direction.E) {
+			degree = 90;
+		}
+		else if (direction.direction == direction.ESE) {
+			degree = 112.5;
+		}
+		else if (direction.direction == direction.SE) {
+			degree = 135;
+		}
+		else if (direction.direction == direction.SSE) {
+			degree = 157.5;
+		}
+		else if (direction.direction == direction.S) {
+			degree = 180;
+		}
+		else if (direction.direction == direction.SSW) {
+			degree = 202.5;
+		}
+		else if(direction.direction == direction.SW) {
+			degree = 225;
+		}
+		else if (direction.direction == direction.WSW) {
+			degree = 247.5;
+		}
+		else if (direction.direction == direction.W) {
+			degree = 270;
+		}
+		else if (direction.direction == direction.WNW) {
+			degree = 292.5;
+		}
+		else if (direction.direction == direction.NW) {
+			degree = 315;
+		}
+		else if(direction.direction == direction.NNW) {
+			degree = 337.5;
+		}
+		return degree;
 	}
-	
 	public Position nextPosition(Direction direction) {
-		this.latitude = latitude + 0.0003 * Math.cos(double(direction.degree));
-		this.longitude = longitude + 0.0003 * Math.sin(direction.degree);
+		this.latitude = latitude + 0.0003 * Math.cos(this.getDegree(direction));
+		this.longitude = longitude + 0.0003 * Math.sin(this.getDegree(direction));
 		return this;
 	}
 	
