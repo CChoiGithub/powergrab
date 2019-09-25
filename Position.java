@@ -21,71 +21,108 @@ public class Position {
 		return this.longitude;
 	}
 
-	//gets degree(double) of direction
+	//gets degree(in double) of direction
 	public double getDegree(Direction direction) {
 		double degree = 0;
-		double rad = Math.PI;
+		
+		//double rad = Math.PI;
+		//2 * Math.toDegrees(rad)
 		
 		if (direction == Direction.E) {
-			degree = 2 * Math.toDegrees(rad);
+			degree = 0;
 		}
 		else if (direction == Direction.ENE) {
-			degree = 2 * Math.toDegrees(rad) + 22.5;
+			degree = 22.5;
 		}
 		else if (direction == Direction.NE) {
-			degree = 2 * Math.toDegrees(rad) + 45;
+			degree = 45;
 		}
 		else if (direction == Direction.NNE) {
-			degree = 2 * Math.toDegrees(rad) + 67.5;
+			degree = 67.5;
 		}
 		else if (direction == Direction.N) {
-			degree = 2 * Math.toDegrees(rad) + 90;
+			degree = 90;
 		}
 		else if (direction == Direction.NNW) {
-			degree = 2 * Math.toDegrees(rad) + 112.5;
+			degree = 112.5;
 		}
 		else if (direction == Direction.NW) {
-			degree = 2 * Math.toDegrees(rad) + 135;
+			degree = 135;
 		}
 		else if (direction == Direction.WNW) {
-			degree = 2 * Math.toDegrees(rad) + 157.5;
+			degree = 157.5;
 		}
 		else if (direction == Direction.W) {
-			degree = 2 * Math.toDegrees(rad) + 180;
+			degree = 180;
 		}
 		else if (direction == Direction.WSW) {
-			degree = 2 * Math.toDegrees(rad) + 202.5;
+			degree = 202.5;
 		}
 		else if(direction == Direction.SW) {
-			degree = 2 * Math.toDegrees(rad) + 225;
+			degree = 225;
 		}
 		else if (direction == Direction.SSW) {
-			degree = 2 * Math.toDegrees(rad) + 247.5;
+			degree = 247.5;
 		}
 		else if (direction == Direction.S) {
-			degree = 2 * Math.toDegrees(rad) + 270;
+			degree = 270;
 		}
 		else if (direction == Direction.SSE) {
-			degree = 2 * Math.toDegrees(rad) + 292.5;
+			degree = 292.5;
 		}
 		else if (direction == Direction.SE) {
-			degree = 2 * Math.toDegrees(rad) + 315;
+			degree = 315;
 		}
 		else if(direction == Direction.ESE) {
-			degree = 2 * Math.toDegrees(rad) + 337.5;
+			degree = 337.5;
 		}
 		return degree;
 		
 	}
 	
+	public double getCosValue(Direction direction) {
+		double cosValue; 
+		
+		if(getDegree(direction) == 90 || getDegree(direction) == 270){ 
+			cosValue = 0;
+			return cosValue;
+		}else if (getDegree(direction) == 180) {
+			cosValue = -1;
+			return cosValue;
+		}else if (getDegree(direction) == 360 || getDegree(direction) == 0) {
+			cosValue = 1;
+			return cosValue;
+		}else cosValue = Math.cos(Math.toRadians(getDegree(direction)));
+			return cosValue;
+	}
+	
+	public double getSinValue(Direction direction) {
+		double sinValue;
+		
+		if (getDegree(direction) == 90) {
+			sinValue = 1;
+			return sinValue;
+		}else if (getDegree(direction) == 180 || getDegree(direction) == 360 || getDegree(direction) == 0) {
+			sinValue = 0;
+			return sinValue;
+		}else if (getDegree(direction) == 270) {
+			sinValue = -1;
+			return sinValue;
+		}else sinValue = Math.sin(Math.toRadians(getDegree(direction)));
+		
+			return sinValue;
+	}
+	
 	public Position nextPosition(Direction direction) {
-		double updateLat = 0.0003 * (Math.cos(Math.toRadians(getDegree(direction))));
-		double updateLong = 0.0003 * (Math.sin(Math.toRadians(getDegree(direction))));
+		
+		double updateLat = 0.0003 * getCosValue(direction);
+		double updateLong = 0.0003 * getSinValue(direction);
 		
 		Position nextPos = new Position(this.latitude + updateLat, this.longitude + updateLong);
-		
 		return nextPos;
+		
 	}
+		
 	
 	public boolean inPlayArea() {
 		return inLatitude() && inLongitude(); 
