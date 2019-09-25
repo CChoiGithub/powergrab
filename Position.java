@@ -26,8 +26,7 @@ public class Position {
 		double degree = 0;
 		double rad = Math.PI;
 		
-		if (direction == null) { direction = Direction.N; }
-		else if (direction == Direction.N){ 
+		if (direction == Direction.N){ 
 			degree = 2 * Math.toDegrees(rad); return degree;}
 		else if (direction == Direction.NNE) {
 			degree = 2 * Math.toDegrees(rad) + 22.5;
