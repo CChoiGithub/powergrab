@@ -2,9 +2,6 @@ package uk.ac.ed.inf.powergrab;
 
 public class Direction {
 	
-	public static Direction direction;
-	public static double degree;
-	
 	public final static Direction E = new Direction();
 	public final static Direction ENE = new Direction();
 	public final static Direction NE = new Direction(); 
@@ -21,18 +18,6 @@ public class Direction {
 	public final static Direction SSE = new Direction();
 	public final static Direction SE = new Direction();
 	public final static Direction ESE = new Direction();
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		
 
 }
