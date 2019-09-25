@@ -79,9 +79,11 @@ public class Position {
 	}
 	
 	public Position nextPosition(Direction direction) {
+		double updateLat = 0.0003 * (Math.cos(Math.toRadians(getDegree(direction))));
+		double updateLong = 0.0003 * (Math.sin(Math.toRadians(getDegree(direction))));
 		
-		Position nextPos = new Position(this.latitude + 0.0003 * Math.cos(getDegree(direction)),
-										this.longitude + 0.0003 * Math.sin(getDegree(direction)));
+		Position nextPos = new Position(this.latitude + updateLat, this.longitude + updateLong);
+		
 		return nextPos;
 	}
 	
