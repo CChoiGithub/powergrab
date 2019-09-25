@@ -2,28 +2,25 @@ package uk.ac.ed.inf.powergrab;
 
 public class Direction {
 	
-	public Direction direction;
+	public static Direction direction;
+	public static double degree;
 	
-	Direction(Direction direction){
-		this.direction = direction;
-	}
+	public final static Direction N = new Direction();
+	public final static Direction NNE = new Direction();
+	public final static Direction NE = new Direction(); 
+	public final static Direction ENE = new Direction();
+	public final static Direction E = new Direction();
+	public final static Direction ESE = new Direction();
+	public final static Direction SE = new Direction();
+	public final static Direction SSE = new Direction();
+	public final static Direction S = new Direction();
+	public final static Direction SSW = new Direction();
+	public final static Direction SW = new Direction();
+	public final static Direction WSW = new Direction();
+	public final static Direction W = new Direction();
+	public final static Direction WNW = new Direction();
+	public final static Direction NW = new Direction();
+	public final static Direction NNW = new Direction();
 	
-	//initialise directions
-	public final Direction N;
-	public final Direction NNE;
-	public final Direction NE; 
-	public final Direction ENE;
-	public final Direction E;
-	public final Direction ESE;
-	public final Direction SE;
-	public final Direction SSE;
-	public final Direction S;
-	public final Direction SSW;
-	public final Direction SW;
-	public final Direction WSW;
-	public final Direction W;
-	public final Direction WNW;
-	public final Direction NW;
-	public final Direction NNW;
-	
+
 }
