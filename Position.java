@@ -25,7 +25,7 @@ public class Position {
 	public double getDegree(Direction direction) {
 		double degree = 0;
 		
-		//double rad = Math.PI;
+		double rad = Math.PI;
 		//2 * Math.toDegrees(rad)
 		
 		if (direction == Direction.E) {
@@ -82,14 +82,21 @@ public class Position {
 	
 	public double getCosValue(Direction direction) {
 		double cosValue; 
+		double angle = getDegree(direction);
 		
-		if(getDegree(direction) == 90 || getDegree(direction) == 270){ 
+		if(angle == 90) {
 			cosValue = 0;
 			return cosValue;
-		}else if (getDegree(direction) == 180) {
+		}else if (angle== 270) {
+			cosValue = 0;
+			return cosValue;
+		}else if (angle== 180) {
 			cosValue = -1;
 			return cosValue;
-		}else if (getDegree(direction) == 360 || getDegree(direction) == 0) {
+		}else if (angle== 360) {
+			cosValue = 1;
+			return cosValue;
+		}else if (angle== 0) {
 			cosValue = 1;
 			return cosValue;
 		}else cosValue = Math.cos(Math.toRadians(getDegree(direction)));
@@ -98,14 +105,21 @@ public class Position {
 	
 	public double getSinValue(Direction direction) {
 		double sinValue;
+		double angle = getDegree(direction);
 		
-		if (getDegree(direction) == 90) {
+		if (angle== 90) {
 			sinValue = 1;
 			return sinValue;
-		}else if (getDegree(direction) == 180 || getDegree(direction) == 360 || getDegree(direction) == 0) {
+		}else if (angle== 180) {
 			sinValue = 0;
 			return sinValue;
-		}else if (getDegree(direction) == 270) {
+		}else if (angle== 360) {
+			sinValue = 0;
+			return sinValue;
+		}else if (angle== 0) {
+			sinValue = 0;
+			return sinValue;
+		}else if (angle== 270) {
 			sinValue = -1;
 			return sinValue;
 		}else sinValue = Math.sin(Math.toRadians(getDegree(direction)));
