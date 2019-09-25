@@ -129,11 +129,15 @@ public class Position {
 	}
 	
 	public Position nextPosition(Direction direction) {
+		//initialise current position
+		Position currentPos = new Position(this.latitude, this.longitude);
 		
-		double updateLat = 0.0003 * getCosValue(direction);
-		double updateLong = 0.0003 * getSinValue(direction);
+		//values to be added to current latitude/longitude
+		double updateLat = 0.0003 * getSinValue(direction);
+		double updateLong = 0.0003 * getCosValue(direction);
 		
-		Position nextPos = new Position(this.latitude + updateLat, this.longitude + updateLong);
+		
+		Position nextPos = new Position(currentPos.latitude + updateLat, currentPos.longitude + updateLong);
 		return nextPos;
 		
 	}
