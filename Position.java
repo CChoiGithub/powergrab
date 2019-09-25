@@ -26,68 +26,55 @@ public class Position {
 		double degree = 0;
 		double rad = Math.PI;
 		
-		if (direction == Direction.N){ 
-			degree = 2 * Math.toDegrees(rad); return degree;}
-		else if (direction == Direction.NNE) {
+		if (direction == Direction.E) {
+			degree = 2 * Math.toDegrees(rad);
+		}
+		else if (direction == Direction.ENE) {
 			degree = 2 * Math.toDegrees(rad) + 22.5;
-			return degree;
 		}
-		else if(direction == Direction.NE) {
+		else if (direction == Direction.NE) {
 			degree = 2 * Math.toDegrees(rad) + 45;
-			return degree;
 		}
-		else if(direction == Direction.ENE) {
+		else if (direction == Direction.NNE) {
 			degree = 2 * Math.toDegrees(rad) + 67.5;
-			return degree;
 		}
-		else if (direction == Direction.E) {
+		else if (direction == Direction.N) {
 			degree = 2 * Math.toDegrees(rad) + 90;
-			return degree;
 		}
-		else if (direction == Direction.ESE) {
+		else if (direction == Direction.NNW) {
 			degree = 2 * Math.toDegrees(rad) + 112.5;
-			return degree;
 		}
-		else if (direction == Direction.SE) {
+		else if (direction == Direction.NW) {
 			degree = 2 * Math.toDegrees(rad) + 135;
-			return degree;
 		}
-		else if (direction == Direction.SSE) {
+		else if (direction == Direction.WNW) {
 			degree = 2 * Math.toDegrees(rad) + 157.5;
-			return degree;
 		}
-		else if (direction == Direction.S) {
+		else if (direction == Direction.W) {
 			degree = 2 * Math.toDegrees(rad) + 180;
-			return degree;
 		}
-		else if (direction == Direction.SSW) {
+		else if (direction == Direction.WSW) {
 			degree = 2 * Math.toDegrees(rad) + 202.5;
-			return degree;
 		}
 		else if(direction == Direction.SW) {
 			degree = 2 * Math.toDegrees(rad) + 225;
-			return degree;
 		}
-		else if (direction == Direction.WSW) {
+		else if (direction == Direction.SSW) {
 			degree = 2 * Math.toDegrees(rad) + 247.5;
-			return degree;
 		}
-		else if (direction == Direction.W) {
+		else if (direction == Direction.S) {
 			degree = 2 * Math.toDegrees(rad) + 270;
-			return degree;
 		}
-		else if (direction == Direction.WNW) {
+		else if (direction == Direction.SSE) {
 			degree = 2 * Math.toDegrees(rad) + 292.5;
-			return degree;
 		}
-		else if (direction == Direction.NW) {
+		else if (direction == Direction.SE) {
 			degree = 2 * Math.toDegrees(rad) + 315;
-			return degree;
 		}
-		else if(direction == Direction.NNW) {
+		else if(direction == Direction.ESE) {
 			degree = 2 * Math.toDegrees(rad) + 337.5;
-			return degree;
-		}return degree;
+		}
+		return degree;
 		
 	}
 	
