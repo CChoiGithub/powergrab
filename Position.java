@@ -6,6 +6,7 @@ public class Position {
 	
 	public double latitude;
 	public double longitude;
+	double degree = 0;
 	
 	public Position(double latitude, double longitude) {
 		this.latitude = latitude;
@@ -23,11 +24,8 @@ public class Position {
 
 	//gets degree(in double) of direction
 	public double getDegree(Direction direction) {
-		double degree = 0;
 		
-		//double rad = Math.PI;
-		//2 * Math.toDegrees(rad)
-		
+		//set East as 0 and north as 90 (in degrees)
 		if (direction == Direction.E) {
 			degree = 0;
 		}
@@ -79,70 +77,20 @@ public class Position {
 		return degree;
 		
 	}
-	
-	public double getCosValue(Direction direction) {
-		double cosValue; 
-		double angle = getDegree(direction);
-		
-		if(angle == 90) {
-			cosValue = 0;
-			return cosValue;
-		}else if (angle == 270) {
-			cosValue = 0;
-			return cosValue;
-		}else if (angle == 180) {
-			cosValue = -1;
-			return cosValue;
-		}else if (angle == 360) {
-			cosValue = 1;
-			return cosValue;
-		}else if (angle == 0) {
-			cosValue = 1;
-			return cosValue;
-		}else cosValue = Math.cos(Math.toRadians(angle));
-			return cosValue;
-	}
-	
-	public double getSinValue(Direction direction) {
-		double sinValue;
-		double angle = getDegree(direction);
-		double radValue = Math.toRadians(angle);
-		
-		if (angle == 90) {
-			sinValue = 1;
-			return sinValue;
-		}else if (angle == 180) {
-			sinValue = 0;
-			return sinValue;
-		}else if (angle == 360) {
-			sinValue = 0;
-			return sinValue;
-		}else if (angle == 0) {
-			sinValue = 0;
-			return sinValue;
-		}else if (angle == 270) {
-			sinValue = -1;
-			return sinValue;
-		}else sinValue = Math.sin(Math.toRadians(angle));
-		
-			return sinValue;
-	}
-	
+
 	public Position nextPosition(Direction direction) {
 		//initialise current position
 		Position currentPos = new Position(this.latitude, this.longitude);
 		
 		//values to be added to current latitude/longitude
-		double updateLat = 0.0003 * getSinValue(direction);
-		double updateLong = 0.0003 * getCosValue(direction);
-		
-		
+		double updateLat = 0.0003 * Math.sin(Math.toRadians(getDegree(direction)));
+		double updateLong = 0.0003 * Math.cos(Math.toRadians(getDegree(direction)));
 		Position nextPos = new Position(currentPos.latitude + updateLat, currentPos.longitude + updateLong);
+		
 		return nextPos;
 		
 	}
 		
-	
 	public boolean inPlayArea() {
 		return inLatitude() && inLongitude(); 
 	}
